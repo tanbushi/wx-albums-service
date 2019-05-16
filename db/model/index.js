@@ -43,6 +43,7 @@ const photoSchema = new mongoose.Schema({
   userId: String,
   albumId: String,
   url: String,
+  filePath: String
 }, {
   timestamps: {
     createdAt: 'created'
