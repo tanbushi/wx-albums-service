@@ -3,7 +3,7 @@ const router = require('./router')
 const bodyParser = require('koa-bodyparser')
 const cors = require('koa2-cors')
 const path = require('path')
-const staticCache = require('koa-static-cache')
+const staticServer = require('koa-static')
 app = new koa();
 
 app.use(cors({
@@ -12,7 +12,7 @@ app.use(cors({
 app.use(bodyParser({
     multipart: true
 }));
-app.use(staticCache(path.join(__dirname, './uploads'), {
+app.use(staticServer(path.resolve(__dirname, './uploads'), {
     maxage: 30 * 24 * 60 * 60
 }));
 app.use(router.routes());
