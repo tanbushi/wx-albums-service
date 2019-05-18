@@ -4,8 +4,10 @@ const bodyParser = require('koa-bodyparser')
 const cors = require('koa2-cors')
 const path = require('path')
 const staticServer = require('koa-static')
+const log = require('./middleware/log')
 app = new koa();
 
+app.use(log);
 app.use(cors({
     origin: '*'
 }));

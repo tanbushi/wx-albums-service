@@ -13,6 +13,7 @@ const getAlbums = async (ctx, next) => {
             }, item.toObject())
         }));
     //获取每个相册的照片数目和封面图片
+    ctx.log.info(`用户${ctx.state.user.name}获取相册信息`);
     ctx.response.body = {
         code: 200,
         data: result

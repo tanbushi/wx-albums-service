@@ -5,6 +5,10 @@ const auth = async (ctx, next) => {
     let sessionKey = ctx.request.headers['x-session'];
     if(sessionKey){
         let user = await getUserBySession(sessionKey);
+        if(user === null){
+            ctx.log.error('无法根据sessionkey获取到用户')
+            ctx.throw(401, 'sessionkey无效');
+        }
         ctx.state.user = user
     }
     await next();

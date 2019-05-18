@@ -26,7 +26,7 @@ const deleteById = async (_id) => {
     let {filePath} = await Photo.findById({
         _id
     })
-    await fs.unlink(filePath);
+    await fs.unlink(filePath, () => {});
     return await Photo.remove({
         _id
     })
